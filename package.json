@@ -1,17 +1,24 @@
 {
   "name": "highlight-code-snippet",
   "displayName": "Highlight Code Snippet",
-  "description": "Highlight selected code snippets with a color",
-  "version": "0.1.0",
-  "publisher": "Treveler",
+  "description": "Highlight selected code snippets with a color and adjustable transparency",
+  "version": "0.2.2",
+  "icon": "icon.png",
+  "publisher": "Traveler",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rovie569/Highlight-Code-Snippets.git"
+  },
   "engines": {
-    "vscode": "^1.30.0"
+    "vscode": "^1.60.0"
   },
   "categories": [
     "Other"
   ],
   "activationEvents": [
-    "onCommand:highlight-code-snippet.highlight"
+    "onCommand:highlight-code-snippet.highlight",
+    "onCommand:highlight-code-snippet.pickColor",
+    "onCommand:highlight-code-snippet.clear"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -19,12 +26,30 @@
       {
         "command": "highlight-code-snippet.highlight",
         "title": "Highlight Selection"
+      },
+      {
+        "command": "highlight-code-snippet.pickColor",
+        "title": "Pick Highlight Color"
+      },
+      {
+        "command": "highlight-code-snippet.clear",
+        "title": "Clear All Highlights"
       }
     ],
     "keybindings": [
       {
         "command": "highlight-code-snippet.highlight",
         "key": "ctrl+h ctrl+i",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "highlight-code-snippet.pickColor",
+        "key": "ctrl+alt+h",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "highlight-code-snippet.clear",
+        "key": "ctrl+shift+h",
         "when": "editorTextFocus"
       }
     ],
@@ -34,6 +59,16 @@
           "command": "highlight-code-snippet.highlight",
           "when": "editorHasSelection",
           "group": "navigation"
+        },
+        {
+          "command": "highlight-code-snippet.pickColor",
+          "when": "editorTextFocus",
+          "group": "navigation"
+        },
+        {
+          "command": "highlight-code-snippet.clear",
+          "when": "editorTextFocus",
+          "group": "navigation"
         }
       ]
     },
@@ -42,8 +77,8 @@
       "properties": {
         "highlightCodeSnippet.defaultColor": {
           "type": "string",
-          "default": "rgba(255, 255, 0, 0.6)",
-          "description": "Default highlight background color"
+          "default": "rgba(255,255,0,0.3)",
+          "description": "Default highlight color with adjustable transparency"
         }
       }
     }
@@ -55,7 +90,7 @@
     "lint": "eslint src"
   },
   "devDependencies": {
-    "@types/vscode": "^1.30.0",
+    "@types/vscode": "^1.60.0",
     "@types/node": "22.x",
     "typescript": "^5.9.3",
     "eslint": "^9.39.1"
