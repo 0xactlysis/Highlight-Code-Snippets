@@ -1,0 +1,63 @@
+{
+  "name": "highlight-code-snippet",
+  "displayName": "Highlight Code Snippet",
+  "description": "Highlight selected code snippets with a color",
+  "version": "0.1.0",
+  "publisher": "Treveler",
+  "engines": {
+    "vscode": "^1.30.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:highlight-code-snippet.highlight"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "highlight-code-snippet.highlight",
+        "title": "Highlight Selection"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "highlight-code-snippet.highlight",
+        "key": "ctrl+h ctrl+i",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "highlight-code-snippet.highlight",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Highlight Code Snippet",
+      "properties": {
+        "highlightCodeSnippet.defaultColor": {
+          "type": "string",
+          "default": "rgba(255, 255, 0, 0.6)",
+          "description": "Default highlight background color"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.30.0",
+    "@types/node": "22.x",
+    "typescript": "^5.9.3",
+    "eslint": "^9.39.1"
+  }
+}
