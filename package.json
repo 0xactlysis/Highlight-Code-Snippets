@@ -2,7 +2,7 @@
   "name": "highlight-code-snippet",
   "displayName": "Highlight Code Snippet",
   "description": "Highlight selected code snippets with a color and adjustable transparency",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "icon": "icon.png",
   "publisher": "Traveler",
   "repository": {
