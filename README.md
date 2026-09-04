@@ -4,6 +4,8 @@ Highlight selected code directly in the editor to mark important logic, temporar
 
 This extension uses editor decorations only. No comments are inserted. No text is changed. The source stays clean.
 
+Source Code: https://github.com/Rovie569/Highlight-Code-Snippets
+
 ---
 
 ## Features
