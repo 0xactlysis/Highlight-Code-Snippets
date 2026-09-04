@@ -16,9 +16,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:highlight-code-snippet.highlight",
-    "onCommand:highlight-code-snippet.pickColor",
-    "onCommand:highlight-code-snippet.clear"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -30,6 +28,10 @@
       {
         "command": "highlight-code-snippet.pickColor",
         "title": "Pick Highlight Color"
+      },
+      {
+        "command": "highlight-code-snippet.clearSpecific",
+        "title": "Clear Specific Highlight"
       },
       {
         "command": "highlight-code-snippet.clear",
@@ -48,6 +50,11 @@
         "when": "editorTextFocus"
       },
       {
+        "command": "highlight-code-snippet.clearSpecific",
+        "key": "ctrl+shift+alt+h",
+        "when": "editorTextFocus"
+      },
+      {
         "command": "highlight-code-snippet.clear",
         "key": "ctrl+shift+h",
         "when": "editorTextFocus"
@@ -62,6 +69,11 @@
         },
         {
           "command": "highlight-code-snippet.pickColor",
+          "when": "editorTextFocus",
+          "group": "navigation"
+        },
+        {
+          "command": "highlight-code-snippet.clearSpecific",
           "when": "editorTextFocus",
           "group": "navigation"
         },
